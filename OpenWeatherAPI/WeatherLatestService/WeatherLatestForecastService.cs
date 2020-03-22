@@ -26,35 +26,26 @@ namespace OpenWeatherAPI.WeatherLatestService
         public WeatherLatestForecastService()
         {
             lastForecast = openWeatherCallManager.GetLatestForecast();
-            OpenWeatherLatest.DeserializeLatestRates(lastForecast);
+            openWeatherLatest.DeserializeLatestRates(lastForecast);
             json_forecast = JsonConvert.DeserializeObject<JObject>(lastForecast);
         }
 
-        public bool CheckRateTypes()
-        {
-            foreach (KeyValuePair<string, JToken> rate in (JObject)json_forecast["forecast"])
-            {
-                if (rate.Value.Type != JTokenType.Float)
-                {
-                    Console.WriteLine(rate.Key);
-                    if (rate.Key != "EUR")
-                    {
-                        Console.WriteLine(rate.Key);
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
 
-        public int RatesCount()
+        //public int RatesCount()
+        //{
+        //    var count = 0;
+        //    foreach (var rate in json_forecast["rates"])
+        //    {
+        //        count++;
+        //    }
+        //    return count;
+        //}
+
+        public JToken GetCity()
         {
-            var count = 0;
-            foreach (var rate in json_forecast["rates"])
-            {
-                count++;
-            }
-            return count;
+
+            return json_forecast["name"];
+            
         }
 
         public JToken getBase()
