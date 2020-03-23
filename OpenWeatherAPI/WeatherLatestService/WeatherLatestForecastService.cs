@@ -14,13 +14,13 @@ namespace OpenWeatherAPI.WeatherLatestService
     {
         public OpenWeatherCallManager openWeatherCallManager = new OpenWeatherCallManager();
 
-        // Our instance of the DTO that transforms our data into the format of our model
+        
         public OpenWeatherLatest openWeatherLatest = new OpenWeatherLatest();
 
-        // The last set of rates retrieved
+        
         public String lastForecast;
 
-        // Rates converted to JObject so we manipulate later in useful methods
+        
         public JObject json_forecast;
 
         public WeatherLatestForecastService()
