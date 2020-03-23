@@ -31,15 +31,7 @@ namespace OpenWeatherAPI.WeatherLatestService
         }
 
 
-        //public int RatesCount()
-        //{
-        //    var count = 0;
-        //    foreach (var rate in json_forecast["rates"])
-        //    {
-        //        count++;
-        //    }
-        //    return count;
-        //}
+      
 
         public JToken GetCity()
         {
@@ -52,6 +44,24 @@ namespace OpenWeatherAPI.WeatherLatestService
         {
             Console.WriteLine(json_forecast["base"]);
             return json_forecast["base"];
+        }
+
+        public JToken GetCountry()
+        {
+            return json_forecast["sys"]["country"];
+        }
+
+        public string ReturnWeatherDescription()
+        {
+            return (string)json_forecast["weather"]["description"];
+        }
+
+        public List<string> ReturnLongitudeLattitude()
+        {
+            List<string> LongLattList = new List<string>();
+            LongLattList.Add((string)json_forecast["coord"]["lon"]);
+            LongLattList.Add((string)json_forecast["coord"]["lat"]);
+            return LongLattList;
         }
     }
 }
